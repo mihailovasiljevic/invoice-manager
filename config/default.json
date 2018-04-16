@@ -5,5 +5,30 @@
   "paginate": {
     "default": 10,
     "max": 50
-  }
+  },
+  "authentication": {
+    "secret": "bc61448e40ad386274545d4f9670f6cf64d8bfbeb546fd99c38496e0cf422f2782fdc1f9b85a4d6fcbb22cd15cc5339a5851b7858ccf2493d2f0138f88c02791d887ab5bfe4ce881b87a37fd212667dcc6b56d0509796b68d40cac071eaa4d453f8a7a7f154508278539aada9c5f889a278eaf837bafee89c8c319add389090855b9a29e01fd3dfab51a52fb48b14d64705245549def719af5289886acb56e317045b1a6589b286b91904a7f4a6a5272bb73e5361c314b422a916e26bd35ba80870693e8d45d9a451174520749bcd12fca394222f02a0328cf67cd6135c695543f8b521b40b26576b4b79361ff1bff99701e96027a82cc99e0ee086096d1c905",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "postgres": "postgres://postgres:root@localhost:5432/invoice_manager"
 }
