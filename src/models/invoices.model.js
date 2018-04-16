@@ -12,13 +12,15 @@ module.exports = function (app) {
     },
     amount: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     date: {
-      type: DataTypes.DATEONLY
+      type: DataTypes.DATEONLY,
+      allowNull: true
     },
     userId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     hooks: {
