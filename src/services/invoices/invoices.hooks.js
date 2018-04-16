@@ -16,12 +16,12 @@ module.exports = {
   },
 
   after: {
-    all: [populateUser()],
+    all: [],
     find: [],
-    get: [],
-    create: [],
-    update: [],
-    patch: [],
+    get: [populateUser()],
+    create: [populateUser()],
+    update: [populateUser()],
+    patch: [populateUser()],
     remove: []
   },
 

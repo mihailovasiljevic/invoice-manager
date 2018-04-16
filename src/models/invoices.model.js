@@ -7,16 +7,16 @@ module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const invoices = sequelizeClient.define('invoices', {
     description: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.TEXT,
+      allowNull: false
     },
     amount: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false
     },
     date: {
       type: DataTypes.DATEONLY,
-      allowNull: true
+      allowNull: false
     },
     userId: {
       type: DataTypes.INTEGER,

@@ -6,23 +6,30 @@ module.exports = function (options = {}) {
   return async context => {
     const { data } = context;
 
-    // Throw an error if we didn't get a text
-    if (!data.amount) {
-      throw new Error('An invoice must have amount!');
-    } else if (!data.date) {
-      throw new Error('An invoice must have date!');
+    if(!data.amount) {
+      throw new Error('A invoice must have a amount');
+    } else if(!data.description) {
+      throw new Error('A invoice must have a description');
+    } else if(!data.date) {
+      throw new Error('A invoice must have a date');
     }
-
     // The authenticated user
     const user = context.params.user;
+    const description = context.data.description;
+    const amount = context.data.amount;
+    const date = context.data.date;
 
     // Override the original data (so that people can't submit additional stuff)
     context.data = {
+      description,
+      amount,
+      date,
       // Set the user id
       userId: user.id,
       // Add the current date
       createdAt: new Date().getTime()
     };
+
     return context;
   };
 };
